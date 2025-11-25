@@ -1,0 +1,2198 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://IC-Alan.github.io/store/CO/cs61c/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Cs61c - IC-Alan 's little site</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gpu-npu" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IC-Alan &#39;s little site" class="md-header__button md-logo" aria-label="IC-Alan 's little site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IC-Alan 's little site
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cs61c
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IC-Alan &#39;s little site" class="md-nav__button md-logo" aria-label="IC-Alan 's little site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IC-Alan 's little site
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to MkDocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cs61c
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>chap 1</p>
+<h1 id="gpu-npu">GPU 和 NPU 是不同的</h1>
+<h1 id="_1">不同的领域需要不同的架构</h1>
+<h1 id="_2">指令集</h1>
+<h1 id="_3"><img alt="alt text" src="../image-2.png" /></h1>
+<p>原来%d %o是进制</p>
+<p>在前面加个0 是八进制</p>
+<p>很奇怪的是 02322可以 但是0o322不可以</p>
+<h1 id="_4">无符号整数</h1>
+<h1 id="_5">有符号整数</h1>
+<p><img alt="alt text" src="../image-3.png" /></p>
+<p>two 's complement 里程表更好看
+<img alt="alt text" src="../image-4.png" /></p>
+<p>偏向编码 这个时候0就是偏置值
+<img alt="alt text" src="../image-5.png" /></p>
+<hr />
+<p>chap 2</p>
+<p><img alt="alt text" src="../image-6.png" /></p>
+<p>Go语言是什么</p>
+<hr />
+<p>这个问题很经典 👍 我给你分几个角度讲清楚“解释型语言”和“编译型语言”的区别：</p>
+<hr />
+<h2 id="1">1. <strong>执行方式不同</strong></h2>
+<ul>
+<li>
+<p><strong>编译型语言（Compiled Language）</strong></p>
+</li>
+<li>
+<p>先把源代码 <strong>整体编译</strong> 成机器码（或字节码/目标代码），再运行。</p>
+</li>
+<li>编译过程发生在运行前。</li>
+<li>示例：C、C++、Go、Rust</li>
+<li>
+<p>流程：</p>
+<p><code>源代码  --编译器--&gt;  可执行文件  --运行--&gt; 结果</code></p>
+</li>
+<li>
+<p><strong>解释型语言（Interpreted Language）</strong></p>
+</li>
+<li>
+<p>源代码不会一次性编译成机器码，而是由解释器 <strong>逐行/逐段翻译并执行</strong>。</p>
+</li>
+<li>编译和执行几乎是同时发生的。</li>
+<li>示例：Python、JavaScript、Ruby</li>
+<li>
+<p>流程：</p>
+<p><code>源代码  --解释器--&gt; 运行结果</code></p>
+</li>
+</ul>
+<hr />
+<h2 id="2">2. <strong>运行效率</strong></h2>
+<ul>
+<li>
+<p><strong>编译型语言</strong>：</p>
+</li>
+<li>
+<p>一次性编译成机器码，CPU 直接执行 → <strong>运行速度快</strong>。</p>
+</li>
+<li>缺点是编译时间可能比较长。</li>
+<li>
+<p><strong>解释型语言</strong>：</p>
+</li>
+<li>
+<p>运行时才解释，每次执行都有额外的翻译开销 → <strong>运行速度较慢</strong>。</p>
+</li>
+<li>但启动快、调试灵活。</li>
+</ul>
+<hr />
+<h2 id="3">3. <strong>可移植性</strong></h2>
+<ul>
+<li>
+<p><strong>编译型语言</strong>：</p>
+</li>
+<li>
+<p>编译后得到的平台相关的二进制文件，移植时需要重新编译。</p>
+</li>
+<li>比如 Windows 上编译的 <code>.exe</code>，不能直接在 Linux 上运行。</li>
+<li>
+<p><strong>解释型语言</strong>：</p>
+</li>
+<li>
+<p>只要有解释器，就能运行相同的源代码。</p>
+</li>
+<li>比如 Python 脚本在 Linux/Windows/Mac 上几乎无需改动。</li>
+</ul>
+<hr />
+<h2 id="4">4. <strong>调试和开发体验</strong></h2>
+<ul>
+<li>
+<p><strong>编译型语言</strong>：</p>
+</li>
+<li>
+<p>运行前必须编译，开发效率稍低，但错误能在编译时发现。</p>
+</li>
+<li>更适合大规模、高性能的项目。</li>
+<li>
+<p><strong>解释型语言</strong>：</p>
+</li>
+<li>
+<p>直接运行源代码，调试快，灵活性高。</p>
+</li>
+<li>适合脚本、快速原型开发。</li>
+</ul>
+<hr />
+<h2 id="5">5. <strong>中间形态（混合型语言）</strong></h2>
+<p>很多现代语言是 <strong>编译 + 解释混合模式</strong>，比如：</p>
+<ul>
+<li><strong>Java</strong>：先编译成字节码（.class 文件），再由 JVM 解释/即时编译（JIT）成机器码。</li>
+<li><strong>Python (PyPy, CPython)</strong>：一般逐行解释，但也可以用 JIT 技术提升性能。</li>
+<li><strong>JavaScript (V8 引擎)</strong>：一边解释一边即时编译优化。</li>
+</ul>
+<hr />
+<p>✅ <strong>总结一句话</strong>：</p>
+<ul>
+<li>编译型语言：<strong>“先翻译，再执行”</strong> → 高效，平台相关。</li>
+<li>解释型语言：<strong>“边翻译，边执行”</strong> → 灵活，可移植性强。</li>
+</ul>
+<hr />
+<p>spark</p>
+<p>cython</p>
+<p>REPL 是“Read-Eval-Print Loop”的缩写，中文常称为“交互式解释器”或“交互式命令行环境”。</p>
+<p>它的工作流程是：</p>
+<ul>
+<li>
+<p>Read（读取）：读取用户输入的代码或命令。</p>
+</li>
+<li>
+<p>Eval（求值）：对输入的内容进行计算或执行。</p>
+</li>
+<li>
+<p>Print（输出）：将结果输出到屏幕。</p>
+</li>
+<li>
+<p>Loop（循环）：继续等待下一次输入。</p>
+</li>
+</ul>
+<p>REPL 常见于 Python、JavaScript、Scala 等编程语言。它可以让你实时输入代码、立即看到结果，非常适合学习、调试和实验。比如在 Python 中，直接输入 python 命令就能进入 REPL 环境。</p>
+<p>以 Python 的 REPL 为例：</p>
+<p>在命令行输入 python 回车，进入交互式环境。
+输入表达式，比如：</p>
+<pre><code class="language-python">&gt;&gt;&gt; 2 + 3
+5
+</code></pre>
+<p>你可以继续输入代码，比如：</p>
+<pre><code class="language-python">&gt;&gt;&gt; print(&quot;Hello, world!&quot;)
+Hello, world!
+</code></pre>
+<p>每输入一行，REPL 都会立即执行并显示结果。这就是 REPL 的典型用法。其他语言如 JavaScript（node）、Scala 也有类似的 REPL 环境。</p>
+<p>docker</p>
+<hr />
+<p>阿姆达尔定理（Amdahl's Law）是并行计算领域的重要理论，用于估算系统加速的极限。</p>
+<p>内容如下：</p>
+<p>假设一个任务中，部分可以并行加速，部分必须串行执行。</p>
+<p>设任务中可并行部分占比为 P，串行部分占比为 1-P。</p>
+<p>使用 N 个处理器时，最大加速比 S 为：</p>
+<p>S = 1 / [(1-P) + P/N]</p>
+<p>含义：</p>
+<p>串行部分越小，整体加速效果越好。
+即使处理器数量无限，系统加速也受限于串行部分。
+阿姆达尔定理说明了并行化的瓶颈，指导我们优化程序时要尽量减少不可并行的部分。</p>
+<hr />
+<p>是的，在 C/C++ 语言中，以 # 开头的语句（如 #include、#define、#ifdef 等）是“预处理命令”或“预处理指令”。</p>
+<p>这些命令在编译之前由预处理器处理，用于：</p>
+<p>包含头文件（#include）
+宏定义（#define）
+条件编译（#ifdef、#ifndef、#endif 等）</p>
+<hr />
+<h1 id="include-include-fileh">include <file.h> 和 #include "file.h" 的区别在于头文件的查找路径：</h1>
+<h1 id="include">include <file.h></h1>
+<p>只在系统头文件目录（如编译器自带的 include 路径）中查找 file.h。
+常用于标准库头文件，如 <stdio.h>、<math.h>。</p>
+<h1 id="include-fileh">include "file.h"</h1>
+<p>先在当前源文件所在目录查找 file.h，找不到再去系统头文件目录查找。
+常用于项目自定义的头文件。
+总结：</p>
+<p>&lt;...&gt; 用于系统或第三方库头文件。
+"..." 用于本地或自定义头文件。</p>
+<hr />
+<pre><code class="language-c">#define PI (3.14159)
+</code></pre>
+<p>加个括号更安全 但是会有一些奇怪的副作用 比如函数的副作用会被使用两次</p>
+<hr />
+<pre><code class="language-c">int main(void)
+int main(int argc, char *argv[])
+</code></pre>
+<p><img alt="alt text" src="../image-7.png" /></p>
+<p>所以善用inttype</p>
+<p><img alt="alt text" src="../image-8.png" /></p>
+<hr />
+<p>C语言有个goto语法 有点像BASIC</p>
+<p>while循环检查不要基于浮点数</p>
+<pre><code class="language-C">pi = 4.0 * atan(1.0) 
+</code></pre>
+<hr />
+<h1 id="chap-4">chap 4</h1>
+<p>指令集架构（Instruction Set Architecture，简称 ISA）是指计算机处理器能够识别和执行的全部指令的规范和设计标准。它定义了处理器支持哪些操作（如加法、存储、跳转等）、指令格式、寻址方式、数据类型和寄存器结构等。</p>
+<p>指令集架构是硬件和软件之间的接口：</p>
+<p>对硬件来说，ISA 决定了 CPU 的设计和实现方式。
+对软件来说，编译器和操作系统需要根据 ISA 生成和执行机器码。
+常见的指令集架构有 x86、ARM、MIPS、RISC-V 等。</p>
+<p>RISC-V 是一种开源的指令集架构（ISA），属于精简指令集计算（RISC）类型。它由加州大学伯克利分校于 2010 年提出，设计目标是简单、灵活、易于扩展，并且免费开放给任何人使用和修改。</p>
+<p>指令集 ： 汇编语言组成</p>
+<p><img alt="alt text" src="../%E6%88%AA%E5%9B%BE%202025-09-06%2021-25-26.png" /></p>
+<p>处理器主频是4GHz 则每0.25纳秒可以访问一次寄存器
+<img alt="alt text" src="../image-13.png" /></p>
+<p>32位的（一个word）  4 字节 </p>
+<p>1位只能存储 1个二进制数字：0 或 1</p>
+<p>寄存器路径主要包括：</p>
+<p>指令从寄存器读出数据</p>
+<p>数据在 ALU 进行运算</p>
+<p>运算结果写回寄存器</p>
+<p>寄存器和大脑一样快</p>
+<p>RISC-V有32个寄存器 x0到x31</p>
+<p>x0硬连线为0  永远存0</p>
+<p>寄存器加减的汇编语言：</p>
+<p><img alt="alt text" src="../image-9.png" /></p>
+<h1 id="_6">是注释</h1>
+<p>加立即数</p>
+<p>ADDI rd, rs1, imm</p>
+<p>(有一定范围 小于32位 需要其他信息)</p>
+<p>减法立即数</p>
+<p>加个负数呗</p>
+<p>最常见立即数是0 就是x0</p>
+<p>其实是把一个移到另一个寄存器</p>
+<p>数据通常比32位小，但很少小于8位（例如char类型）。当所有数据都是8位的倍数时，处理起来很方便。</p>
+<p>一个8位的数据块被称为一个字节（byte）。</p>
+<p>内存地址实际上是以字节为单位进行寻址的</p>
+<p>对于一个“字”（Word），它的地址被定义为该字中最右边那个字节（也就是最低有效字节，Least-Significant Byte, LSB）的地址。</p>
+<p><em>这正是小端序的定义：最低有效字节存储在最低的内存地址。</em></p>
+<p>“字地址”之间的间隔是4个字节，因为一个字是4个字节
+<img alt="alt text" src="../image-11.png" />
+常见采用小端序的体系结构有：x86、x86-64、部分 ARM</p>
+<p>小端序的优点：</p>
+<p>处理低位数据时更高效</p>
+<h1 id="data-transfer-instruction">Data Transfer Instruction</h1>
+<p>内存层次结构
+<img alt="alt text" src="../image-10.png" /></p>
+<p>memory 内存
+<img alt="alt text" src="../973df08a98846d7730073b09d5ab598.jpg" /></p>
+<p>对每个字节寻址 存的是数字 数字是32位宽即4个字节 </p>
+<p>lw $rt, offset($rs)</p>
+<p>$rt：目标寄存器（register target）—— 要存放数据的寄存器</p>
+<p>$rs：基址寄存器（register source）—— 保存内存地址的基址</p>
+<p>offset：偏移量（以字节为单位），用于定位内存中的具体地址</p>
+<p>lw 一次加载 4 字节（32 位）</p>
+<p>$s1 存的就是一个内存地址（或基地址）。</p>
+<p>可以把 $s1 看成一个指针变量，
+lw 就是“通过指针取值”的操作。</p>
+<p>相当于c语言</p>
+<pre><code class="language-c">t0 = *(s1 + 1);  // 每个 word 占 4 字节，所以 +4 表示下一个元素
+</code></pre>
+<p>偏移量必须是常量 在汇编时已知 是4的倍数（但是其实允许不对齐）</p>
+<p>数据流从右向左  内存加载到寄存器
+<img alt="alt text" src="../17a9c3ca526ccc2222ad60b51365953.jpg" /></p>
+<p>寄存器存到内存里</p>
+<p>data从左到右</p>
+<p>这俩存的取的都是32位（word）</p>
+<p><img alt="alt text" src="../f82b9b5b9f52cb539ff792a784b5dda.jpg" /></p>
+<p>写入目标寄存器的低字节位</p>
+<p>如果传输的是带符号数</p>
+<p>保留符号 把写入的那个低位字节取出最高有效位 扩展到这个字（4个字节）的所有高位</p>
+<p><img alt="alt text" src="../image-14.png" /></p>
+<p>支持无符号数转移，不扩展符号位，就用零填充高位字节</p>
+<p>即 lbu  （unsigned byte loads）
+语法与lb相同</p>
+<p>sb不支持符号位扩展，他只是存一下</p>
+<h1 id="_7">栈：后进先出（盘子）</h1>
+<h1 id="computer-decision-making">Computer Decision Making 计算机决策</h1>
+<p>分支决策  改变指令执行顺序</p>
+<p>if-statement:</p>
+<h2 id="_8">有条件分支）</h2>
+<p><img alt="alt text" src="../ceb088a2cbd40bace58fc826693acd4.jpg" />
+beq reg1 ,reg2 ,L1  比较reg1和reg2寄存器的内容 相同就去L1（L1是另一部分代码的地址）</p>
+<p>不相同就去下一条指令</p>
+<p>bne 正好相反 不同才跳转</p>
+<p>blt less than分支</p>
+<p>bge 大于等于时分支</p>
+<p>无符号版本的bltu bgeu
+<img alt="alt text" src="../eae1234253569e5f5588dbcef95276d.jpg" /></p>
+<h2 id="_9">无条件分支 ）</h2>
+<p>就是跳转 对应always语句  像一个goto</p>
+<p>可以用无条件分支做有条件分支 但是无条件分支跳转范围更大 </p>
+<p>为什么没有大于时或小于等于时分支 直接换一下寄存器位置就行</p>
+<p>没有与立即数进行分支的指令</p>
+<p><img alt="alt text" src="../17bd275afbc1dc057161bc119d010b8.jpg" /></p>
+<p>不写跳转就会走else</p>
+<p><img alt="alt text" src="../888862ee0fd67d9d308ab4627990f55.jpg" /></p>
+<p>把x8复制到x9  不想破坏内容</p>
+<p>还有初始化</p>
+<p>地址+4 因为占了4个字节</p>
+<h1 id="logical-instruction">逻辑指令 Logical Instruction</h1>
+<p>与算数指令数据通路一样 都是ALU</p>
+<h2 id="and">and 用于隔离</h2>
+<h2 id="not-xor111111">not  用xor和111111实现</h2>
+<h2 id="sll-0">左移sll 相当于乘法 补0</h2>
+<p>×12：×8 + ×4</p>
+<h2 id="srl-0">右移srl 填0</h2>
+<h2 id="_10">当处理有符号位时：算数右移  复制符号位到右移产生的空位</h2>
+<h1 id="_11">程序</h1>
+<p><img alt="alt text" src="../6132950679c65a35ede4c304cb8c6a4.jpg" />
+可执行文件太大了，要放内存里</p>
+<p>内存按字节寻址</p>
+<p>通常指令宽度为32位  顺序执行除非跳转</p>
+<p><img alt="alt text" src="../96ea0954515a6399d94c2abb16ee30a.jpg" />
+PC 程序计数器 （Program Counter）： 一个特殊的寄存器，存储将要执行的下一条指令的字节地址</p>
+<p>control unit use PC to fetch instruction from Memory ，take a look at what is the instruction and execute it by using the data path and the Memory</p>
+<p>更新PC  两条相邻指令差一个字 就是4个字节  PC加四字节或者跳转到新地址
+<img alt="alt text" src="../5cc1f95252bc35d5917ce0ed1bbd070.jpg" />
+让代码更有可读性：</p>
+<p>Load立即数指令： 把立即数加载到寄存器中 不与内存交互</p>
+<p>nop 无操作  处理器等待 原地空转 x0作为目的寄存器的指令都是nop</p>
+<h1 id="_12">函数调用</h1>
+<p><img alt="alt text" src="../bd226aac7eca54b64bbdf3878dab066.jpg" />
+<img alt="alt text" src="../4c7fb28edf674ed05e0827cb5122668.jpg" />
+ra 保存的就是<strong>执行完函数后下一步要执行的指令的地址</strong></p>
+<p>返回地址（Return Address）：
+是一条函数调用指令执行后，程序应当继续执行的那条下一条指令的地址（PC 值）</p>
+<p>当你“跳到函数去执行”时，</p>
+<p>你必须记住“回来以后该从哪继续执行”。</p>
+<p>这个位置的地址（通常是 PC + 4）就是“返回地址”。</p>
+<p><img alt="alt text" src="../2ec38c11a45f7b9b6746d2419e511aa.jpg" />
+<img alt="alt text" src="../fccc6e714799ee5f1eea6ade38e6d3f.jpg" /></p>
+<p>实际的指令：</p>
+<ul>
+<li>
+<p>jal rd, label  jump-and-link</p>
+</li>
+<li>
+<p>jalr rd,rs,imm   jump-and-link-register
+（其他都是伪指令）</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">指令</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">常用于</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>jal rd, label</code></td>
+<td style="text-align: left;">跳转到立即数偏移地址（PC 相对），并把返回地址写入 <code>rd</code></td>
+<td style="text-align: left;">函数调用</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>jalr rd, offset(rs1)</code></td>
+<td style="text-align: left;">跳转到寄存器 <code>rs1 + offset</code> 指定的地址，并把返回地址写入 <code>rd</code></td>
+<td style="text-align: left;">函数返回、间接跳转</td>
+</tr>
+</tbody>
+</table>
+<p>在 RISC-V 汇编中，ret 是一个伪指令，展开后是：</p>
+<p>jalr x0, 0(ra)</p>
+<p>跳转到 ra 中保存的返回地址，不保存新的返回地址（因为 rd=x0）</p>
+<p><img alt="alt text" src="../image-15.png" /></p>
+<p>函数调用之前，把寄存器中的旧值存到内存里，就是stack
+<img alt="alt text" src="../image-16.png" /></p>
+<h1 id="stack">stack</h1>
+<p>x0是0  x1是返回地址 x2是堆栈指针 </p>
+<p>sp is the stack pointer 存堆栈的地址
+<img alt="alt text" src="../7d067f0a3542efe4dd093cc4f6fce23.jpg" />
+<img alt="alt text" src="../4e328f96e8f70936b83865eae1f3262.jpg" />
+<img alt="alt text" src="../666497477d5da5cf3b659bd4694bf25.jpg" /></p>
+<h2 id="_13">🧩 一、为什么函数调用要用“栈”？</h2>
+<p>因为在程序执行时，函数可以：</p>
+<ul>
+<li>嵌套调用（<code>main → f → g → h</code>）</li>
+<li>有局部变量（每个函数的变量要隔离）</li>
+<li>有返回地址要保存（<code>ra</code> 不能被覆盖）</li>
+</ul>
+<p>于是我们需要一个<strong>后进先出（LIFO）</strong>的存储结构，
+既能保存这些信息，又能在函数返回时自动恢复。</p>
+<p>这个结构就是 <strong>调用栈（call stack）</strong>。</p>
+<hr />
+<h2 id="spstack-pointer">🧠 二、栈的管理寄存器：<code>sp</code>（Stack Pointer）</h2>
+<p>在 RISC-V 中，<code>x2</code> 寄存器被规定为 <strong><code>sp</code> (stack pointer)</strong>，即“栈指针”。</p>
+<ul>
+<li><code>sp</code> <strong>始终指向当前栈顶（最低地址）</strong></li>
+<li>栈是<strong>向下生长的</strong>（即地址减小的方向）</li>
+<li>每次函数调用时，<code>sp</code> 向下移动分配空间；</li>
+<li>返回时，<code>sp</code> 向上恢复原状。</li>
+</ul>
+<hr />
+<h2 id="_14">🧱 三、函数调用时栈上保存什么？</h2>
+<p>通常保存三类信息：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">内容</th>
+<th style="text-align: left;">说明</th>
+<th style="text-align: left;">由谁负责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">返回地址（<code>ra</code>）</td>
+<td style="text-align: left;">回到上一个函数的指令位置</td>
+<td style="text-align: left;">被调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: left;">调用者保存的寄存器</td>
+<td style="text-align: left;">防止被覆盖（如 <code>t0-t6</code>）</td>
+<td style="text-align: left;">调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: left;">被调用者保存的寄存器</td>
+<td style="text-align: left;">在函数返回前必须恢复（如 <code>s0-s11</code>）</td>
+<td style="text-align: left;">被调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: left;">局部变量空间</td>
+<td style="text-align: left;">函数内部使用</td>
+<td style="text-align: left;">被调用者分配</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="risc-v">RISC-V 中的寄存器分类</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">寄存器</th>
+<th style="text-align: left;">别名</th>
+<th style="text-align: left;">说明</th>
+<th style="text-align: left;">保存约定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">x0</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: left;">恒为 0</td>
+<td style="text-align: left;">不可修改</td>
+</tr>
+<tr>
+<td style="text-align: left;">x1</td>
+<td style="text-align: left;">ra</td>
+<td style="text-align: left;">return address（返回地址）</td>
+<td style="text-align: left;">调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: left;">x2</td>
+<td style="text-align: left;">sp</td>
+<td style="text-align: left;">stack pointer（栈指针）</td>
+<td style="text-align: left;">全局唯一</td>
+</tr>
+<tr>
+<td style="text-align: left;">x3</td>
+<td style="text-align: left;">gp</td>
+<td style="text-align: left;">global pointer</td>
+<td style="text-align: left;">程序初始化时设定</td>
+</tr>
+<tr>
+<td style="text-align: left;">x4</td>
+<td style="text-align: left;">tp</td>
+<td style="text-align: left;">thread pointer</td>
+<td style="text-align: left;">线程局部</td>
+</tr>
+<tr>
+<td style="text-align: left;">x5–x7</td>
+<td style="text-align: left;">t0–t2</td>
+<td style="text-align: left;">临时寄存器</td>
+<td style="text-align: left;">调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: left;">x8</td>
+<td style="text-align: left;">s0/fp</td>
+<td style="text-align: left;">保存寄存器 0 / frame pointer</td>
+<td style="text-align: left;"><strong>被调用者保存</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">x9</td>
+<td style="text-align: left;">s1</td>
+<td style="text-align: left;">保存寄存器 1</td>
+<td style="text-align: left;"><strong>被调用者保存</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">x10–x17</td>
+<td style="text-align: left;">a0–a7</td>
+<td style="text-align: left;">参数/返回值寄存器</td>
+<td style="text-align: left;">调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: left;">x18–x27</td>
+<td style="text-align: left;">s2–s11</td>
+<td style="text-align: left;">保存寄存器 2–11</td>
+<td style="text-align: left;"><strong>被调用者保存</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">x28–x31</td>
+<td style="text-align: left;">t3–t6</td>
+<td style="text-align: left;">临时寄存器</td>
+<td style="text-align: left;">调用者保存</td>
+</tr>
+</tbody>
+</table>
+<p>非常好的问题 👏，这是理解 <strong>RISC-V 函数调用机制（calling convention）</strong> 的核心！
+我们来完整讲清楚：函数调用时到底涉及哪些寄存器、它们的作用、由谁保存。</p>
+<hr />
+<p>在 RISC-V 架构中，函数调用大致分为三个阶段：</p>
+<ol>
+<li><strong>调用前</strong>（caller）：准备参数、保存现场</li>
+<li><strong>调用中</strong>（callee）：执行函数、保存必要寄存器</li>
+<li><strong>返回时</strong>：恢复现场、返回调用点</li>
+</ol>
+<p>整个过程会涉及以下几类寄存器👇</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>名称</th>
+<th>作用</th>
+<th>保存责任</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>📦 栈与返回</td>
+<td><code>sp</code>, <code>ra</code></td>
+<td>栈指针 &amp; 返回地址</td>
+<td><code>sp</code> 全局唯一，<code>ra</code> 通常由被调用者保存</td>
+</tr>
+<tr>
+<td>🗣 参数/返回值</td>
+<td><code>a0–a7</code></td>
+<td>前 8 个参数 &amp; 返回值</td>
+<td>调用者保存</td>
+</tr>
+<tr>
+<td>🧮 临时寄存器</td>
+<td><code>t0–t6</code></td>
+<td>临时计算</td>
+<td>调用者保存</td>
+</tr>
+<tr>
+<td>💾 被调用者保存寄存器</td>
+<td><code>s0–s11</code></td>
+<td>保持跨函数的数据</td>
+<td>被调用者保存</td>
+</tr>
+<tr>
+<td>📍 特殊指针</td>
+<td><code>gp</code>, <code>tp</code></td>
+<td>全局/线程指针</td>
+<td>初始化后不动</td>
+</tr>
+<tr>
+<td>⚙️ 零寄存器</td>
+<td><code>zero (x0)</code></td>
+<td>恒为 0</td>
+<td>不可修改</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_15">🧩 三、寄存器用途解析</h2>
+<h3 id="1-a0a7">1️⃣ 参数传递（a0–a7）</h3>
+<ul>
+<li>调用者用 <code>a0–a7</code> 放前 8 个参数。</li>
+<li>返回值也放在 <code>a0</code>（第二个返回值在 <code>a1</code>）。</li>
+</ul>
+<p>👉 超过 8 个参数的情况：
+剩余的参数会存到 <strong>栈（stack）</strong> 里，由被调用者从栈中取。</p>
+<hr />
+<h3 id="2-ra">2️⃣ 返回地址（ra）</h3>
+<ul>
+<li><code>jal</code> 指令会把<strong>下一条指令的地址</strong>存入 <code>ra</code>。</li>
+<li>返回时执行 <code>jr ra</code> 或 <code>ret</code>（其实就是 <code>jalr x0, 0(ra)</code>）。</li>
+</ul>
+<pre><code class="language-riscv">jal ra, func   # 调用函数，ra = 下一条指令地址
+...
+func:
+    ret        # 跳回 ra
+</code></pre>
+<hr />
+<h3 id="3-sp">3️⃣ 栈指针（sp）</h3>
+<ul>
+<li>每个函数都会<strong>分配自己的栈帧</strong>。</li>
+<li>栈帧保存局部变量、寄存器备份等。</li>
+</ul>
+<pre><code class="language-riscv">func:
+    addi sp, sp, -16   # 分配16字节栈空间
+    sw ra, 12(sp)      # 保存返回地址
+    sw s0, 8(sp)       # 保存 s0
+    ...
+    lw ra, 12(sp)      # 恢复 ra
+    lw s0, 8(sp)       # 恢复 s0
+    addi sp, sp, 16
+    ret
+</code></pre>
+<hr />
+<h3 id="4-s0s11">4️⃣ 被调用者保存寄存器（s0–s11）</h3>
+<ul>
+<li>调用者希望这些寄存器在函数调用后<strong>值不变</strong>。</li>
+<li>所以如果函数里要用它们，就要先保存到栈上，再恢复回来。</li>
+</ul>
+<hr />
+<h3 id="5-t0t6-a0a7-ra">5️⃣ 调用者保存寄存器（t0–t6, a0–a7, ra）</h3>
+<ul>
+<li>如果调用者在调用前还需要这些寄存器的值，
+  它自己负责把值存到栈上。</li>
+</ul>
+<pre><code class="language-riscv">main:
+    addi t0, zero, 10
+    sw t0, 0(sp)       # 调用前保存
+    jal func
+    lw t0, 0(sp)       # 调用后恢复
+</code></pre>
+<hr />
+<h2 id="_16">✅ 总结一句话</h2>
+<blockquote>
+<p>一个函数调用通常会涉及：</p>
+<ul>
+<li><strong>a0–a7</strong>（参数/返回值）</li>
+<li><strong>ra</strong>（返回地址）</li>
+<li><strong>sp</strong>（栈指针）</li>
+<li><strong>s0–s11</strong>（被调用者保存）</li>
+<li><strong>t0–t6</strong>（临时寄存器）</li>
+</ul>
+</blockquote>
+<p>📘 <strong>调用者保存临时状态</strong>，
+📗 <strong>被调用者保证稳定状态</strong>，
+📙 <strong>栈（sp）是它们的缓冲区</strong>。
+<img alt="alt text" src="../8f6a2a3cb9116bad5e35d88cb7f5969.jpg" />
+<img alt="alt text" src="../8f4780337f9a655cfb13bc80f196f05.jpg" />
+寄存器的两大类型</p>
+<table>
+<thead>
+<tr>
+<th>寄存器类型</th>
+<th>名称范围</th>
+<th>保存者</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Caller-saved</strong>（调用者保存）</td>
+<td><code>t0–t6</code>, <code>a0–a7</code>, <code>ra</code></td>
+<td>调用者</td>
+<td>用完就扔，不需要恢复</td>
+</tr>
+<tr>
+<td><strong>Callee-saved</strong>（被调用者保存）</td>
+<td><code>s0–s11</code></td>
+<td>被调用者</td>
+<td>调用结束前必须恢复原值</td>
+</tr>
+</tbody>
+</table>
+<p>两种寄存器保存模型的对比</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>谁负责保存</th>
+<th>保存频率</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>t0–t6</strong>（caller-saved）</td>
+<td>调用者</td>
+<td>只有在值有用时才保存</td>
+<td>临时计算结果</td>
+</tr>
+<tr>
+<td><strong>s0–s11</strong>（callee-saved）</td>
+<td>被调用者</td>
+<td>每个函数都必须保存/恢复（如果用了）</td>
+<td>长期局部变量</td>
+</tr>
+</tbody>
+</table>
+<p>函数调用的序言和结尾：</p>
+<pre><code class="language-c">int  Leaf
+    (int g, int h, int i, int j)
+{
+    int f;
+    f = (g + h) - (i + j);
+    return f;
+}
+</code></pre>
+<pre><code class="language-riscv">Leaf:
+addi sp sp -8  #序言
+sw s1, 4(sp)
+sw s0, 0(sp)
+
+
+add s0,a0,a1
+add s1,a2,a3
+sub a0,s0,s1
+
+lw s0,0(sp)  #结尾
+lw s1，4(sp)
+addi sp.sp,8
+jr ra
+</code></pre>
+<h1 id="abiapplication-binary-interface">ABI（Application Binary Interface，应用二进制接口）</h1>
+<p>规定哪些寄存器传参数；</p>
+<p>哪些寄存器要被保存；</p>
+<p>栈帧怎么组织；</p>
+<p>返回值放哪；</p>
+<p>调用顺序和返回顺序等</p>
+<p>RISC-V 的 ABI 规定寄存器职责分明：
+| 类型         | 名称     | 调用约定       | 用途 |
+| ---------- | ------ | ---------- | -- |
+| <strong>a0–a7</strong>  | 调用者保存  | 参数 &amp; 返回值   |    |
+| <strong>t0–t6</strong>  | 调用者保存  | 临时变量（不用保存） |    |
+| <strong>s0–s11</strong> | 被调用者保存 | 长期变量（必须保存） |    |
+| <strong>sp, ra</strong> | 特殊     | 栈顶、返回地址    |    |</p>
+<h1 id="gp-global-pointer">gp： Global Pointer（全局指针）</h1>
+<p>也就是：全局数据区的基地址寄存器。</p>
+<p>在程序运行时，全局变量和静态变量（即 .data、.bss 段）存放在内存的一片区域中。</p>
+<p>编译器会：</p>
+<p>在程序加载时，把一个“全局数据区”的基地址（通常是中间偏移）放进 gp；</p>
+<p>以后访问全局变量时，就可以通过 gp + offset 的形式快速定位。</p>
+<h1 id="memory">Memory</h1>
+<p><img alt="alt text" src="../033739fbc81a7d32c534eb768952dfb.jpg" />
+<img alt="alt text" src="../51d73a4c9b58457a6c085393161a698.jpg" /><img alt="alt text" src="../7daa37050160432ea48edb475e19f63.jpg" />
+<img alt="alt text" src="../9af46f1f027303aa4b3a740f81bf21b.jpg" /></p>
+<h1 id="instructions-represent">Instructions represent</h1>
+<p><img alt="alt text" src="../image-17.png" /></p>
+<h2 id="_17">机器语言</h2>
+<h3 id="r-format">R-format(算数与逻辑)</h3>
+<p><img alt="alt text" src="../image-18.png" /></p>
+<p>R型操作码都一样  0110011</p>
+<p>不同的指令在 funct3和7 （10位）</p>
+<p><img alt="alt text" src="../image-19.png" /></p>
+<p><img alt="alt text" src="../image-20.png" /></p>
+<p>一个例子</p>
+<p><img alt="alt text" src="../image-21.png" /></p>
+<p>所有R-format
+<img alt="alt text" src="../image-22.png" /></p>
+<p>sll 逻辑左移</p>
+<p>slt 小于</p>
+<p>sltu  小于（无符号版）</p>
+<p>sra 逻辑右移</p>
+<p>0100000  这里1是符号扩展</p>
+<h3 id="i-formatimm">I-format（立即数imm）</h3>
+<p>add rd,rs1,rs2</p>
+<p>add rd,rs1,imm
+<img alt="alt text" src="../image-23.png" />
+12位立即数</p>
+<p>-2048到+2047  </p>
+<p>因为rs1的值是32位 所以立即数要符号位扩展到32位
+<img alt="alt text" src="../image-24.png" />
+没有subi 用addi</p>
+<p>funct3一致</p>
+<p>左右移  移位量是5位</p>
+<h3 id="load">Load</h3>
+<p>和imm差不多  funct2是加载的类型</p>
+<p><img alt="alt text" src="../image-25.png" />
+例子：
+<img alt="alt text" src="../image-26.png" /></p>
+<p><img alt="alt text" src="../image-27.png" />
+lb lh都放在目标寄存器的地位 然后进行符号扩展</p>
+<p>lbu和lhu不进行符号扩展</p>
+<p>lw不需要符号扩展 他就是32位</p>
+<p><strong>从寄存器 rs1 中取出一个基址，加上立即数 imm 形成内存地址，
+从该地址读取数据，然后写入寄存器 rd</strong></p>
+<h3 id="s-format">S-format</h3>
+<p>存储指令
+<img alt="alt text" src="../image-28.png" />
+例子：
+<img alt="alt text" src="../image-29.png" />
+寄存器指令位置不动 把立即数拆了</p>
+<p>处理器要很快找到寄存器位置</p>
+<p>字节（byte） 8位（bit） </p>
+<p>半字（half word）16位（bit）  </p>
+<p>字（word）32位（bit）</p>
+<p><img alt="alt text" src="../image-30.png" /></p>
+<h3 id="b-format">B-format</h3>
+<p>分支</p>
+<p>代码在内存里 不与数据混用</p>
+<p>用PC控制</p>
+<p>压缩指令格式：16位</p>
+<p>16位和32位混用，因此risc-v决定按照16位偏移（2个字节）</p>
+<p>但是我们现在只学32位的指令</p>
+<p><img alt="alt text" src="../image-31.png" /></p>
+<p>与S类似</p>
+<p><img alt="alt text" src="../image-32.png" /></p>
+<p>跳转以字节为单位 offset就是立即数imm</p>
+<p>所以立即数应该是偶数</p>
+<p>imm[0] 即最低有效位一定是0  储存12位来表示13位的偏移量</p>
+<p>例子：</p>
+<p><img alt="alt text" src="../image-33.png" />
+offset直接算就好  offset=0就是自身</p>
+<p><img alt="alt text" src="../image-34.png" /></p>
+<p>总是扩展inst[31] 即imm的最高位（符号位）</p>
+<p><img alt="alt text" src="../image-35.png" /></p>
+<p><img alt="alt text" src="../image-36.png" /></p>
+<h3 id="_18">长立即数</h3>
+<p><img alt="alt text" src="../image-37.png" /></p>
+<p><img alt="alt text" src="../image-38.png" /></p>
+<h4 id="lui">Lui</h4>
+<p>但是addi会符号扩展</p>
+<p><img alt="alt text" src="../image-39.png" />
+<img alt="alt text" src="../image-40.png" /></p>
+<p>伪指令 li x10， imm</p>
+<h4 id="auipc">AUIPC</h4>
+<p><img alt="alt text" src="../image-41.png" /></p>
+<h3 id="j-format">J-format</h3>
+<p>跳转
+<img alt="alt text" src="../image-42.png" /></p>
+<p>还是偶数 和分支一样</p>
+<p>20位来覆盖21位</p>
+<p><img alt="alt text" src="../image-43.png" /></p>
+<p><img alt="alt text" src="../image-44.png" />  </p>
+<p>最低有效位不一定是0  （扩展符号位）可以跳转到绝对位置</p>
+<p><img alt="alt text" src="../image-45.png" /></p>
+<h2 id="_19">解释和翻译/编译</h2>
+<h3 id="interpretation">Interpretation</h3>
+<p>逐句读取源代码 → 逐句分析 → 逐句执行</p>
+<p>解释器（interpreter）不会把整个程序一次性翻译成机器码，而是边读边执行。(动态执行)</p>
+<p>也会解释机器码</p>
+<p>因为不同isa适配</p>
+<p>解释器本身不依赖目标机器 CPU 的指令集，而是依赖它自己定义的一套“虚拟指令集</p>
+<p>python代码 -&gt; 词法分析 把字符序列分成单词（token）</p>
+<p>-&gt;  语法分析 构建语法树（AST）</p>
+<p>-&gt; 生成中间字节码 解释器不会直接生成机器码，而是生成虚拟机字节码</p>
+<p>解释器本身（比如 CPython 的 python 可执行文件）是用 C 写的，它在发布/安装时已经被编译、汇编、链接成机器码。这一步只做一次（在你运行解释器之前或安装时）。</p>
+<p>-&gt; 虚拟指令（bytecode） 不是单独被编译成机器码再运行的；它们被解释器读入，解释器用已编译好的机器码“执行”这些虚拟指令的语义。</p>
+<h3 id="transformation">transformation</h3>
+<p>Venus！</p>
+<p><img alt="alt text" src="../image-46.png" /></p>
+<p>加载器：把程序加载到内存中 并设置他需要的东西 然后运行 </p>
+<h4 id="_20">编译器</h4>
+<p>.c -&gt; .s  c语言转汇编
+<img alt="alt text" src="../image-47.png" />
+伪指令可行（由汇编器优化）</p>
+<h4 id="_21">汇编器</h4>
+<p><img alt="alt text" src="../image-48.png" /></p>
+<p><img alt="alt text" src="../image-49.png" /></p>
+<p>是的，基本上你看到的这些指令都是 <strong>编译器生成的汇编代码里的</strong>，尤其是像 GCC 这种生成的 <strong>GNU 汇编（GAS）语法</strong> 的汇编文件。</p>
+<p>我帮你梳理一下它们在 <strong>C/C++ 编译过程中的位置和作用</strong>：</p>
+<hr />
+<h3 id="1_1">1️⃣ 编译流程回顾</h3>
+<ol>
+<li>
+<p><strong>源代码</strong> (<code>.c</code> / <code>.cpp</code>) → <strong>预处理</strong> → <strong>编译</strong> → <strong>汇编</strong> → <strong>目标文件</strong> (<code>.o</code>) → <strong>链接</strong> → <strong>可执行文件</strong></p>
+</li>
+<li>
+<p>在 <strong>编译生成的汇编文件</strong>（用 <code>gcc -S foo.c</code> 可以看到 <code>.s</code> 文件）里，常见的指令有：</p>
+</li>
+<li>
+<p><code>.text</code>：放编译出来的 <strong>函数机器码</strong></p>
+</li>
+<li><code>.data</code>：放 <strong>已初始化的全局/静态变量</strong></li>
+<li><code>.bss</code>：放 <strong>未初始化的全局/静态变量</strong></li>
+<li><code>.global</code>：标记函数或变量 <strong>可被其他目标文件访问</strong></li>
+<li><code>.string</code> / <code>.asciz</code>：放 <strong>字符串字面量</strong></li>
+<li><code>.word</code> / <code>.long</code>：放 <strong>整数常量或初始化值</strong></li>
+</ol>
+<hr />
+<h3 id="2_1">2️⃣ 举例</h3>
+<p>假设你有一个简单的 C 代码：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int g = 42;         // 已初始化全局变量
+int h;              // 未初始化全局变量
+
+int main() {
+    const char* s = &quot;Hello&quot;;
+    return 0;
+}
+</code></pre>
+<p>用 GCC 生成汇编 (<code>gcc -S main.c</code>) 可能得到类似：</p>
+<pre><code class="language-asm">    .data
+g:  .long 42           # g 存放在 .data 段
+
+    .bss
+h:  .skip 4            # h 存放在 .bss 段
+
+    .text
+    .global main
+main:
+    push %rbp
+    mov %rsp, %rbp
+
+    lea .LC0(%rip), %rdi   # 字符串地址
+    mov %eax, 0
+    pop %rbp
+    ret
+
+    .section .rodata
+.LC0:
+    .string &quot;Hello&quot;        # 字符串常量
+</code></pre>
+<p>可以看到：</p>
+<ul>
+<li><code>.data</code>：初始化变量 <code>g</code></li>
+<li><code>.bss</code>：未初始化变量 <code>h</code></li>
+<li><code>.text</code>：函数 <code>main</code> 的代码</li>
+<li><code>.global main</code>：使 <code>main</code> 全局可见</li>
+<li><code>.string</code>：字符串字面量 <code>"Hello"</code></li>
+</ul>
+<hr />
+<p>所以总结：</p>
+<blockquote>
+<p><strong>你看到的 <code>.text</code>、<code>.data</code>、<code>.bss</code>、<code>.global</code>、<code>.string</code>、<code>.word</code>，都是编译器把 C/C++ 代码翻译成汇编后生成的符号或指令，最终会被汇编器翻译成机器码存入可执行文件里。</strong></p>
+</blockquote>
+<p>-1 在补码里全是1</p>
+<p><img alt="alt text" src="../image-50.png" /></p>
+<p>la（load address）其实就是把一个标签的绝对地址加载到寄存器</p>
+<p>符号表
+<img alt="alt text" src="../image-51.png" /></p>
+<p>重定位表：
+<img alt="alt text" src="../image-52.png" /></p>
+<p>非常棒的问题👏，这其实是汇编器和链接器的<strong>核心机制</strong>——
+搞懂“符号表（Symbol Table）”和“重定位表（Relocation Table）”，你就真正理解汇编器和链接器是怎么协作生成可执行程序的了。</p>
+<hr />
+<h2 id="symbol-table">🧩 一、符号表（Symbol Table）</h2>
+<h3 id="_22">📖 定义</h3>
+<p>符号表是汇编器在汇编时维护的一张“符号—地址映射表”。</p>
+<p>它记录程序中所有<strong>可被引用的符号（symbol）</strong>，包括：</p>
+<ul>
+<li>全局变量</li>
+<li>局部标签（函数、局部跳转标签）</li>
+<li>外部引用（例如 <code>printf</code>）</li>
+<li>常量、字符串、段等位置符号</li>
+</ul>
+<hr />
+<h3 id="_23">📘 符号表的内容（每个符号的条目）</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>符号名</td>
+<td><code>main</code>, <code>msg</code>, <code>printf</code></td>
+</tr>
+<tr>
+<td>Section</td>
+<td>符号所在段</td>
+<td><code>.text</code>, <code>.data</code>, <code>.bss</code>, <code>UNDEF</code></td>
+</tr>
+<tr>
+<td>Value</td>
+<td>符号在该段内的偏移</td>
+<td><code>0x00000010</code></td>
+</tr>
+<tr>
+<td>Size</td>
+<td>符号长度（函数或变量大小）</td>
+<td>4, 32...</td>
+</tr>
+<tr>
+<td>Binding</td>
+<td>符号的可见性</td>
+<td><code>LOCAL</code>, <code>GLOBAL</code>, <code>EXTERN</code></td>
+</tr>
+<tr>
+<td>Type</td>
+<td>符号类型</td>
+<td><code>FUNC</code>, <code>OBJECT</code>, <code>NOTYPE</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="_24">📗 示例：符号表（简化）</h3>
+<p>假设源代码如下：</p>
+<pre><code class="language-asm">.data
+msg: .asciz &quot;Hi&quot;
+
+.text
+.globl main
+main:
+    la a0, msg
+    li a7, 4
+    ecall
+</code></pre>
+<p>汇编后（未链接）符号表可能长这样：</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Section</th>
+<th>Value</th>
+<th>Binding</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>msg</td>
+<td>.data</td>
+<td>0x0000</td>
+<td>LOCAL</td>
+<td>OBJECT</td>
+</tr>
+<tr>
+<td>main</td>
+<td>.text</td>
+<td>0x0000</td>
+<td>GLOBAL</td>
+<td>FUNC</td>
+</tr>
+<tr>
+<td>a7</td>
+<td>—</td>
+<td>—</td>
+<td>REGISTER</td>
+<td>—</td>
+</tr>
+<tr>
+<td>ecall</td>
+<td>—</td>
+<td>—</td>
+<td>INSTR</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="relocation-table">⚙️ 二、重定位表（Relocation Table）</h2>
+<h3 id="_25">📖 定义</h3>
+<p>当一条指令中引用了一个<strong>未知地址的符号</strong>（例如全局变量、函数、字符串标签等），
+汇编器<strong>暂时无法确定它的绝对地址</strong>，就必须在输出文件里留个“坑”，告诉链接器：</p>
+<blockquote>
+<p>“这里有个还没填的地址，请链接时帮我补上！”</p>
+</blockquote>
+<p>这张“需要补坑”的记录表，就是<strong>重定位表（Relocation Table）</strong>。</p>
+<hr />
+<h3 id="_26">📘 每个重定位项包含的内容</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Offset</td>
+<td>哪个位置需要修改</td>
+<td><code>.text</code> 段内的偏移</td>
+</tr>
+<tr>
+<td>Symbol</td>
+<td>关联的符号</td>
+<td>比如 <code>msg</code></td>
+</tr>
+<tr>
+<td>Type</td>
+<td>重定位类型</td>
+<td>R_RISCV_HI20 / R_RISCV_LO12_I</td>
+</tr>
+<tr>
+<td>Addend</td>
+<td>附加值（常数偏移）</td>
+<td>一般为0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="la-a0-msg">📗 举例：<code>la a0, msg</code></h3>
+<p>这条伪指令其实会展开为两条指令：</p>
+<pre><code class="language-asm">lui a0, %hi(msg)
+addi a0, a0, %lo(msg)
+</code></pre>
+<p>汇编器此时并不知道 <code>msg</code> 在内存中的真实地址，只知道它<strong>属于 <code>.data</code> 段</strong>。
+于是汇编器会生成两个<strong>重定位项</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>段</th>
+<th>偏移</th>
+<th>符号</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.text</td>
+<td>0x0004</td>
+<td>msg</td>
+<td>R_RISCV_HI20</td>
+<td>需要把 <code>%hi(msg)</code> 填进去</td>
+</tr>
+<tr>
+<td>.text</td>
+<td>0x0008</td>
+<td>msg</td>
+<td>R_RISCV_LO12_I</td>
+<td>需要把 <code>%lo(msg)</code> 填进去</td>
+</tr>
+</tbody>
+</table>
+<p>当链接器把 <code>.text</code> 段和 <code>.data</code> 段拼在一起时，它会：</p>
+<ul>
+<li>计算出 <code>msg</code> 的实际地址（比如 <code>0x10010000</code>）</li>
+<li>把 <code>0x10010000</code> 的高 20 位填入 <code>lui</code></li>
+<li>把低 12 位填入 <code>addi</code></li>
+</ul>
+<p>这样程序里的 <code>la a0, msg</code> 最终就变成了有效的加载地址指令。</p>
+<hr />
+<h2 id="_27">🧱 三、符号表与重定位表的关系</h2>
+<p>这两张表是“配对使用”的：</p>
+<table>
+<thead>
+<tr>
+<th>符号表</th>
+<th>重定位表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定义了每个符号的<strong>逻辑位置</strong></td>
+<td>指出程序里哪些地方<strong>用到了符号</strong></td>
+</tr>
+<tr>
+<td>相当于字典</td>
+<td>相当于“引用索引”</td>
+</tr>
+<tr>
+<td>由汇编器生成，链接器使用</td>
+<td>由汇编器生成，链接器修改</td>
+</tr>
+</tbody>
+</table>
+<p>链接器链接时：</p>
+<ol>
+<li>查找重定位表 → 找出需要修改的地方</li>
+<li>在符号表中查到该符号的真实地址</li>
+<li>计算偏移 → 回写机器码</li>
+</ol>
+<hr />
+<h2 id="_28">🧠 四、直观理解</h2>
+<p>可以这样想象：</p>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>比喻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>符号表</strong></td>
+<td>名片本：记录“谁是谁”、“住哪”</td>
+</tr>
+<tr>
+<td><strong>重定位表</strong></td>
+<td>TODO 清单：哪些地方要等“地址确定”后再改</td>
+</tr>
+</tbody>
+</table>
+<p>汇编器：</p>
+<blockquote>
+<p>“我先把名字都记下（符号表），遇到暂时没地址的地方打个标记（重定位表）。”</p>
+</blockquote>
+<p>链接器：</p>
+<blockquote>
+<p>“我来帮你补全这些标记，让每条指令都指向正确的地址。”</p>
+</blockquote>
+<hr />
+<h2 id="_29">🧩 五、总结对比表</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>符号表</th>
+<th>重定位表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>作用</td>
+<td>保存符号及其定义位置</td>
+<td>保存需要修正的引用位置</td>
+</tr>
+<tr>
+<td>内容</td>
+<td>名称、段、地址、类型</td>
+<td>段偏移、符号引用、类型</td>
+</tr>
+<tr>
+<td>谁生成</td>
+<td>汇编器</td>
+<td>汇编器</td>
+</tr>
+<tr>
+<td>谁使用</td>
+<td>链接器</td>
+<td>链接器</td>
+</tr>
+<tr>
+<td>示例</td>
+<td><code>msg → .data+0x00</code></td>
+<td><code>.text+0x08</code> 引用了 <code>msg</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_30">🧩 一、汇编器的总体目标</h2>
+<p>汇编器的任务是：</p>
+<blockquote>
+<p>把汇编源文件 <code>.s</code> 翻译成目标文件 <code>.o</code>，
+<code>.o</code> 文件中不直接包含最终地址，而是包含：</p>
+<ul>
+<li>翻译好的机器指令（.text/.data 段）</li>
+<li><strong>符号表</strong>（记录每个名字是什么）</li>
+<li><strong>重定位表</strong>（记录哪里需要等链接器来补地址）</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="_31">⚙️ 二、汇编器的三大核心工作</h2>
+<h3 id="1_2">🧱 1. 翻译：把汇编指令变成机器码模板</h3>
+<p>汇编器扫描 <code>.s</code> 文件，逐行翻译：</p>
+<pre><code class="language-asm">addi t0, t1, 4
+</code></pre>
+<p>➡️ 转换为机器码：</p>
+<pre><code>000000000100 01001 000 01000 0010011
+</code></pre>
+<p>伪指令也会展开：</p>
+<pre><code class="language-asm">la a0, msg
+</code></pre>
+<p>➡️ 实际生成：</p>
+<pre><code class="language-asm">lui a0, %hi(msg)
+addi a0, a0, %lo(msg)
+</code></pre>
+<p>到这里，汇编器已经<strong>能生成机器指令的结构</strong>，但有的指令还不能填上立即数（因为符号的地址还没确定）。</p>
+<hr />
+<h3 id="2-symbol-table">📇 2. 建符号表（Symbol Table）</h3>
+<p>汇编器在翻译过程中，记录所有“带名字的东西”的位置：</p>
+<table>
+<thead>
+<tr>
+<th>符号名</th>
+<th>所在段</th>
+<th>段内偏移</th>
+<th>绑定类型</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>msg</td>
+<td>.data</td>
+<td>0x0000</td>
+<td>LOCAL</td>
+<td>OBJECT</td>
+</tr>
+<tr>
+<td>main</td>
+<td>.text</td>
+<td>0x0000</td>
+<td>GLOBAL</td>
+<td>FUNC</td>
+</tr>
+<tr>
+<td>printf</td>
+<td>UNDEF</td>
+<td>0x0000</td>
+<td>EXTERN</td>
+<td>FUNC</td>
+</tr>
+</tbody>
+</table>
+<p>这张表告诉链接器：</p>
+<blockquote>
+<p>“msg 在数据段的偏移 0x0；main 是全局函数；printf 我没定义，等你帮我找。”</p>
+</blockquote>
+<hr />
+<h3 id="3-relocation-table">🧩 3. 建重定位表（Relocation Table）</h3>
+<p>当汇编器发现一条指令里引用了<strong>未知地址的符号</strong>，比如：</p>
+<pre><code class="language-asm">lui a0, %hi(msg)
+addi a0, a0, %lo(msg)
+</code></pre>
+<p>它知道 <code>msg</code> 的地址还没确定（因为 <code>.data</code> 段在别的文件可能有其他变量），
+于是生成两条<strong>重定位记录</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>段</th>
+<th>偏移</th>
+<th>符号</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.text</td>
+<td>0x0004</td>
+<td>msg</td>
+<td>R_RISCV_HI20</td>
+<td>高 20 位</td>
+</tr>
+<tr>
+<td>.text</td>
+<td>0x0008</td>
+<td>msg</td>
+<td>R_RISCV_LO12_I</td>
+<td>低 12 位</td>
+</tr>
+</tbody>
+</table>
+<p>告诉链接器：</p>
+<blockquote>
+<p>“当你知道 msg 的真实地址后，请到 <code>.text</code> 段偏移 0x4 和 0x8 处把立即数补上。”</p>
+</blockquote>
+<hr />
+<h2 id="_32">🧠 三、所以汇编器到底干了啥（一句话总结）</h2>
+<blockquote>
+<p><strong>汇编器把汇编语言转成机器码雏形，并建立地址关系表。</strong></p>
+</blockquote>
+<p>更具体地说：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>汇编器做的事情</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1️⃣ 解析源代码</td>
+<td>分析每条汇编指令和伪指令</td>
+<td>中间结构</td>
+</tr>
+<tr>
+<td>2️⃣ 确定段布局</td>
+<td><code>.text</code>、<code>.data</code>、<code>.bss</code> 各自起始地址和大小</td>
+<td>段表</td>
+</tr>
+<tr>
+<td>3️⃣ 建符号表</td>
+<td>记录每个标签、函数、变量名及其段和偏移</td>
+<td><code>.symtab</code></td>
+</tr>
+<tr>
+<td>4️⃣ 翻译成机器码</td>
+<td>生成指令的二进制形式</td>
+<td><code>.text</code> 段</td>
+</tr>
+<tr>
+<td>5️⃣ 生成重定位项</td>
+<td>对未确定地址的符号生成“待填坑信息”</td>
+<td><code>.rel.text</code>、<code>.rel.data</code></td>
+</tr>
+<tr>
+<td>6️⃣ 输出目标文件</td>
+<td>把以上内容打包为 <code>.o</code></td>
+<td>ELF 目标文件</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_33">🧭 四、形象比喻</h2>
+<p>可以把整个过程想象成装修房子：</p>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>比喻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>汇编器</td>
+<td>木匠：先搭好框架（机器码），但一些家具位置（地址）还没定</td>
+</tr>
+<tr>
+<td>符号表</td>
+<td>户型图：标明每个房间和物品的名字与位置</td>
+</tr>
+<tr>
+<td>重定位表</td>
+<td>待装修清单：记录“等材料到了再装这里”</td>
+</tr>
+<tr>
+<td>链接器</td>
+<td>总包工：收齐所有 <code>.o</code> 文件，算出最终地址，把坑补上</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="elf">🧾 五、最终汇编器的输出文件内容（ELF结构示意）</h2>
+<pre><code>hello.o
+├── .text       # 翻译后的机器码
+├── .data       # 静态数据
+├── .bss        # 未初始化变量
+├── .symtab     # 符号表
+├── .rel.text   # 重定位信息（指令引用的符号）
+├── .rel.data   # 重定位信息（数据引用的符号）
+└── 头部信息    # ELF 文件头等元数据
+</code></pre>
+<hr />
+<h2 id="_34">✅ 六、总结一句话记忆</h2>
+<blockquote>
+<p><strong>汇编器 = 翻译器 + 制表员 + 留坑工。</strong></p>
+<ul>
+<li>翻译器：把汇编指令翻成机器码</li>
+<li>制表员：建立符号表，告诉谁在哪</li>
+<li>留坑工：遇到未知地址就打标记，等链接器补</li>
+</ul>
+</blockquote>
+<p><img alt="alt text" src="../image-53.png" /></p>
+<p>硬编码是写死的东西</p>
+<h2 id="_35">链接器</h2>
+<p><img alt="alt text" src="../image-54.png" />
+<img alt="alt text" src="../image-55.png" />
+<img alt="alt text" src="../image-56.png" />
+<img alt="alt text" src="../image-57.png" /></p>
+<p>编译后的汇编中：</p>
+<p>局部变量 不直接存在于任何段中，而是由 .text（代码段）的指令在运行时通过栈操作动态分配。</p>
+<p>静态变量 / 全局变量 会被放进 .data（或 .bss）段中，等待链接器统一安排它们在“静态区”的最终地址。</p>
+<p>内存通常被划分成几块（以 C 程序为例）：</p>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>内容</th>
+<th>分配时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>代码区 (.text)</strong></td>
+<td>函数机器码</td>
+<td>编译 + 链接确定</td>
+</tr>
+<tr>
+<td><strong>静态/全局区 (.data/.bss)</strong></td>
+<td>全局变量、静态变量</td>
+<td><strong>链接时确定地址</strong>，程序运行期间一直存在</td>
+</tr>
+<tr>
+<td><strong>栈区 (stack)</strong></td>
+<td>局部变量、函数调用帧</td>
+<td>运行时分配/释放</td>
+</tr>
+<tr>
+<td><strong>堆区 (heap)</strong></td>
+<td>动态分配（malloc/new）</td>
+<td>运行时</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="alt text" src="../image-58.png" /></p>
+<p><img alt="alt text" src="../image-59.png" />
+<img alt="alt text" src="../image-60.png" /></p>
+<p>运行成本高一点</p>
+<p><img alt="alt text" src="../image-61.png" /></p>
+<p>在机器代码级别链接</p>
+<h2 id="os">加载器（OS）</h2>
+<p><img alt="alt text" src="../image-63.png" /></p>
+<p>162课程
+可执行文件在磁盘里</p>
+<p>干动态链接的活
+<img alt="alt text" src="../image-64.png" />
+<img alt="alt text" src="../image-62.png" /></p>
+<h1 id="_36">例子</h1>
+<p><img alt="alt text" src="../image-65.png" />
+<img alt="alt text" src="../image-66.png" /></p>
+<p><img alt="alt text" src="../image-67.png" /></p>
+<p>红色是链接器的任务</p>
+<p><img alt="alt text" src="../image-68.png" />
+注意补偿</p>
+<p>把补码取反+1得到绝对值</p>
+<h1 id="_37">单核处理器</h1>
+<p><img alt="alt text" src="../image-69.png" />
+可以每个指令每个数据路径  但是现在是单个数据路径 由control来控制实现什么</p>
+<p><img alt="alt text" src="../image-70.png" /></p>
+<p><img alt="alt text" src="../image-72.png" /></p>
+<p>分而治之实现指令
+<img alt="alt text" src="../image-71.png" /></p>
+<p>IMEM 指令内存</p>
+<p>DMEM 数据内存</p>
+<p>在物理层面的一块内存上
+<img alt="alt text" src="../image-73.png" /></p>
+<p>都在单周期实现</p>
+<h2 id="_38">寄存器</h2>
+<p><img alt="alt text" src="../image-74.png" /></p>
+<p>寄存器在使能时在时钟的上升沿写入
+<img alt="alt text" src="../image-75.png" />
+读取不需要时钟  但是会需要一些访问时间</p>
+<p>可以同时读两个</p>
+<h2 id="_39">内存</h2>
+<p><img alt="alt text" src="../image-76.png" />
+也有读写访问时间</p>
+<p>rs1 rs2 rd</p>
+<p><img alt="alt text" src="../image-77.png" /></p>
+<p><img alt="alt text" src="../image-78.png" /></p>
+<p>开始实现不同通路：</p>
+<p>IMEM不需要时钟</p>
+<p><img alt="alt text" src="../image-80.png" /></p>
+<p><img alt="alt text" src="../image-81.png" /></p>
+<p>有符号扩展：高位全接 imm 最高位</p>
+<p>寄存器总是读取 只有写入才按照时钟<img alt="alt text" src="../image-82.png" /></p>
+<p>risc-v是加载储存架构：没有其他方式可以访问内存</p>
+<p>jarl </p>
+<p><img alt="alt text" src="../image-83.png" /></p>
+<p><img alt="alt text" src="../image-84.png" /></p>
+<h2 id="_40">性能测试</h2>
+<p><img alt="alt text" src="../f6fd6fa0c5d15f8852230e3d7f55b6a.jpg" /><img alt="alt text" src="../d7eec8b982dc9fb69449df8c48d7dbf.jpg" /><img alt="alt text" src="../535c7b7087ed1aa5f17a4387859bef7.jpg" /><img alt="alt text" src="../a65f6c1cdd79fb69a4a30f2b056782c.jpg" /></p>
+<h1 id="_41">流水线</h1>
+<p>理论加速4倍，4个阶段（长度为l，任务量为x 原长度为x，后4l=x）</p>
+<p>但是流水线的填充和清除需要时间</p>
+<p><img alt="alt text" src="../5a2d2d1ffa8236a9a43eb9aabaa4039.jpg" /><img alt="alt text" src="../de90d915e047b223aea01844f80cf88.jpg" /></p>
+<p>算了一下还真是，减少不了太多时间</p>
+<h2 id="throughput">🧩 一、什么是吞吐量（Throughput）</h2>
+<p><strong>吞吐量</strong> = 单位时间内系统完成的任务数量。</p>
+<blockquote>
+<p>对于处理器来说，就是每秒能完成多少条指令（instructions per second）。</p>
+</blockquote>
+<hr />
+<h3 id="_42">✅ 举个简单例子</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">情况</th>
+<th style="text-align: center;">每条指令耗时</th>
+<th style="text-align: center;">吞吐量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">不流水线</td>
+<td style="text-align: center;">5 ns</td>
+<td style="text-align: center;">1 / 5 ns = 0.2 指令/ns</td>
+</tr>
+<tr>
+<td style="text-align: left;">流水线（5级）</td>
+<td style="text-align: center;">每级 1 ns</td>
+<td style="text-align: center;">理论上每 1 ns 出一条指令 → 1 指令/ns</td>
+</tr>
+</tbody>
+</table>
+<p>👉 所以流水线的作用是 <strong>提高吞吐量（Throughput）</strong>，
+而不是缩短单条指令的延迟（Latency）。</p>
+<hr />
+<h2 id="_43">⚙️ 二、流水线是怎么工作的</h2>
+<p>假设有 5 个阶段（IF, ID, EX, MEM, WB）：</p>
+<pre><code>阶段: 取指 → 译码 → 执行 → 访存 → 写回
+</code></pre>
+<ul>
+<li>每个阶段负责一部分工作；</li>
+<li>下一条指令可以在前一条指令的下一个阶段同时执行。</li>
+</ul>
+<p>就像工厂流水线一样：
+一辆车在喷漆时，下一辆可以焊接骨架。</p>
+<hr />
+<h2 id="_44">⏱️ 三、为什么“被最慢阶段限制”</h2>
+<p>关键在于：</p>
+<blockquote>
+<p>所有阶段必须 <strong>同步</strong>，每个阶段的时间取决于 <strong>最慢阶段</strong>。</p>
+</blockquote>
+<hr />
+<h3 id="_45">🔍 举个例子</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">阶段</th>
+<th style="text-align: center;">延迟（ns）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">IF</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;">ID</td>
+<td style="text-align: center;">1.5</td>
+</tr>
+<tr>
+<td style="text-align: left;">EX</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;">MEM</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;">WB</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p>那么：</p>
+<ul>
+<li>每条指令的一个阶段最慢要花 2 ns（在 EX 阶段）。</li>
+<li>所以整个流水线的 <strong>时钟周期必须 ≥ 2 ns</strong>，否则最慢阶段来不及完成。</li>
+</ul>
+<hr />
+<h3 id="_46">📈 结果</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">项目</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">时钟周期</td>
+<td style="text-align: left;">被最慢阶段决定</td>
+<td style="text-align: left;">2 ns</td>
+</tr>
+<tr>
+<td style="text-align: left;">吞吐量</td>
+<td style="text-align: left;">每个周期完成一条指令</td>
+<td style="text-align: left;">1 / 2 ns = 0.5 指令/ns</td>
+</tr>
+</tbody>
+</table>
+<p>即使其他阶段更快，也得等 EX 阶段慢慢做完。
+所以整个流水线 <strong>像一队人被最慢的人拖慢了速度</strong>。</p>
+<hr />
+<h2 id="vs">🔄 四、延迟 vs 吞吐量</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">概念</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">延迟（Latency）</td>
+<td style="text-align: left;">单个任务完成的时间</td>
+<td style="text-align: left;">不变甚至略增</td>
+</tr>
+<tr>
+<td style="text-align: left;">吞吐量（Throughput）</td>
+<td style="text-align: left;">单位时间完成的指令数量</td>
+<td style="text-align: left;">提高很多</td>
+</tr>
+</tbody>
+</table>
+<p><strong>流水线的本质：牺牲延迟，换取吞吐量。</strong></p>
+<hr />
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>每条指令延迟（Latency）</strong></td>
+<td>不变甚至略增加（因为有流水线寄存器）</td>
+</tr>
+<tr>
+<td><strong>吞吐量（Throughput）</strong></td>
+<td>提高（多条指令同时在不同阶段）</td>
+</tr>
+<tr>
+<td><strong>每条指令启动时间（首条输出）</strong></td>
+<td>推迟（要等流水线“填满”）</td>
+</tr>
+<tr>
+<td><strong>每个阶段间需要额外寄存器延迟</strong></td>
+<td>增加硬件延时</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_47">开始实现</h1>
+<p>寄存器写入是时序的（需要时钟沿），寄存器读取是组合的（直接读 Q 信号）</p>
+<p>流水线 CPU 必须 用“流水线寄存器（Pipeline Registers）”隔离每个阶段。</p>
+<blockquote>
+<p><strong>如果没有“流水线寄存器”，上一阶段的输出会在同一拍被下一条指令覆盖，整个流水线根本跑不起来。</strong></p>
+</blockquote>
+<hr />
+<h1 id="1_3">🟥 1. 为什么流水线一定要“流水线寄存器”？</h1>
+<p>流水线分五阶段（经典 RISC）：</p>
+<pre><code>IF  →  ID  →  EX  →  MEM  →  WB
+</code></pre>
+<p>如果不用流水线寄存器，那么：</p>
+<ul>
+<li>IF 阶段产生的 PC、指令会直接被下一次 IF 更新</li>
+<li>ID 阶段解析指令时，用的指令会在同一个周期被下一条指令覆盖</li>
+<li>EX 阶段的操作数没有保存位置</li>
+<li>MEM 阶段读写结果不稳定</li>
+<li>WB 要写回谁？不知道，因为数据被覆盖完了</li>
+</ul>
+<p>最终变成：</p>
+<blockquote>
+<p><strong>所有阶段共享同一份信号，每条指令刚开始执行就被下一条覆盖 → CPU 根本不能流水处理。</strong></p>
+</blockquote>
+<p>也就是说：</p>
+<p><strong>流水线如果不加寄存器，整个 CPU 只能每拍执行一条整指令（非流水）。</strong></p>
+<hr />
+<h1 id="2_2">🟦 2. 流水线寄存器是什么？</h1>
+<p>流水线寄存器 = <strong>在每两个阶段之间加一个寄存器，用时钟沿锁住数据防止被覆盖</strong></p>
+<p>比如：</p>
+<pre><code>IF/ID 寄存器  
+ID/EX 寄存器  
+EX/MEM 寄存器  
+MEM/WB 寄存器  
+</code></pre>
+<p>示意图：</p>
+<pre><code>      ┌──────┐     ┌──────┐     ┌──────┐
+IF →  │ IF/ID│ →ID │ID/EX │ →EX │EX/MEM│ →MEM → ...
+      └──────┘     └──────┘     └──────┘
+</code></pre>
+<p>每个模块之间<strong>隔离成独立的节拍</strong>。</p>
+<hr />
+<h1 id="3_1">🟩 3. 用一个例子看覆盖问题（马上懂）</h1>
+<p>假设你没有流水线寄存器，只有这两个信号：</p>
+<pre><code>instr
+pc
+</code></pre>
+<h3 id="1_4">周期 1：</h3>
+<p>IF 得到指令 A → instr = A</p>
+<h3 id="id-instr-a">同周期 ID 解析 instr（= A）</h3>
+<h3 id="2_3">周期 2：</h3>
+<p>IF 得到指令 B → instr = B（覆盖掉 A）</p>
+<p>但此时 ID 还在处理 A！</p>
+<p>但是：</p>
+<blockquote>
+<p>instr 已经变成 B 了。</p>
+</blockquote>
+<p>所以 ID 解析到的变成了 <strong>错误的 B</strong>，A 彻底废掉。</p>
+<p>所以没有寄存器就完蛋了。</p>
+<hr />
+<h1 id="4_1">🟧 4. 有流水线寄存器后，情况变成这样：</h1>
+<p>在周期末，寄存器 <strong>锁住</strong> 每阶段的数据：</p>
+<pre><code>IF → (IF/ID 寄存器锁住 A)
+ID → (ID/EX 寄存器锁住 A)
+EX → (EX/MEM 锁住 A)
+MEM → …
+</code></pre>
+<p>同时：</p>
+<p>下一条指令 B 在 IF 运行
+但 <strong>不会覆盖 IF/ID 中的 A</strong>，因为它们之间加了寄存器。</p>
+<hr />
+<h1 id="5_1">🟨 5. 流水线寄存器的本质</h1>
+<p>一句话：</p>
+<blockquote>
+<p><strong>流水线寄存器就是一堵墙，每拍锁住前一阶段的全部输出，让下一阶段安心处理自己的那条指令，不会被下一条覆盖。</strong></p>
+</blockquote>
+<p>流水线寄存器是让 CPU 能“并行执行多条指令”的根本。</p>
+<hr />
+<h1 id="6">🟦 6. 流水线寄存器里会存什么？</h1>
+<p>以 IF/ID 为例：</p>
+<pre><code>PC + 4
+当前指令 instruction
+可能还有异常/预测信息
+</code></pre>
+<p>ID/EX 可能存：</p>
+<pre><code>操作码 opcode
+源寄存器读出的值
+立即数
+ALU 控制信息
+目标寄存器号
+</code></pre>
+<p>每一阶段都把下一阶段需要的数据全部<strong>锁住</strong>。</p>
+<hr />
+<h1 id="7">🟪 7. 用一句你一听就懂的话总结：</h1>
+<blockquote>
+<p><strong>没有流水线寄存器 = 只有一个共享“变量” → 下一条指令会覆盖上一条 → 流水线无法存在。</strong></p>
+<p><strong>有流水线寄存器 = 每条指令在不同阶段都有自己的“数据快照” → 才能并发执行多个指令。</strong></p>
+</blockquote>
+<hr />
+<p><img alt="alt text" src="../81c3e4476c4ffb9dda1d6052bd4be7a.jpg" /></p>
+<p>单周期CPU 周期800ps</p>
+<p>流水线的是200ps</p>
+<p>吞吐量提高，整条指令周期时间变长</p>
+<p>理论5倍提速，但是因为每个阶段时间不一样，按照最长200ps，导致损失了一点，也能提高4倍</p>
+<h2 id="datapath">Datapath</h2>
+<p>单周期<img alt="alt text" src="../image-85.png" /></p>
+<p>memory read和register access是组合逻辑  不依赖于时钟 </p>
+<p>五个阶段:
+<img alt="alt text" src="../image-86.png" /></p>
+<p>流水线：</p>
+<p><img alt="alt text" src="../image-87.png" /></p>
+<p>流水线寄存器分割不同阶段 </p>
+<p>IF/ID  ID/EX EX/MA MA/WB</p>
+<p>IF/ID  ： 一个pc寄存器 一个inst寄存器，而且获取一条指令，下游会保存之前的四条指令（同时有5条指令进行）</p>
+<p>举个例子：</p>
+<pre><code>取址阶段 第一个时钟上沿pc写入新值并且pc寄存器输出新值，memory输出指令（组合逻辑） 下一个时钟上沿 指令和pc写入流水线寄存器，同时pc寄存器输入新值并输出新值
+</code></pre>
+<p>每个流水线寄存器都必须保存在该阶段执行的指令位</p>
+<p>还有控制位</p>
+<p>只保存了pc没有保存pc+4 重建了pc+4 省了一堆寄存器</p>
+<p>所以前三个阶段是pc，内存访问阶段使用pc+4</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

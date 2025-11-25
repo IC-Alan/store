@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://IC-Alan.github.io/store/</loc>
-         <lastmod>2025-10-21</lastmod>
+         <lastmod>2025-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://IC-Alan.github.io/store/CO/cs61c/</loc>
+         <lastmod>2025-11-25</lastmod>
     </url>
 </urlset>
