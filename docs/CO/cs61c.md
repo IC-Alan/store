@@ -1982,11 +1982,14 @@ block size = 2 bytes
 
 8B 的data  2-byte blocks  有4块
 
-offset = 1 （块的大小决定）
 
-index = 2 （blocks个数）
+blocks 的单位是byte
 
-tag = 29（32 - 3）
+offset = 1位 （块的大小决定） offset的单位是byte（因为内存地址的单位是byte）
+
+index = 2位 （blocks个数）
+
+tag = 29位（32 - 3）
 
 8就能确定面积
 ![alt text](c86ed479cf92e24efea4519709e6614.jpg)
@@ -1999,3 +2002,40 @@ tag = 29（32 - 3）
 L1 cache = 32 KB
 
 这 32KB 只包含数据块（data blocks）
+![alt text](acf8c43c842c4cf1d4223fd49207955.jpg)
+offset后两位总是0，因为我处理的数据以字为单位，所以我加载下一个数据需要偏移n个字，所以后两位 （字= 4 byte）总是0
+
+而且用了空间局限性， block是4 word，把周围的4 word都加载进去
+
+检查cache的顺序实际是IVTO 先看index，再看valid
+
+### 硬件实现
+1. 读操作
+![alt text](57083bdc376576c0a0ccef0159c092f.jpg)
+
+这是同时的，如果hit我就要这个data，没hit我就忽略这个data
+
+2. 写操作
+
+两种方式
+![alt text](98615cd10a71a6380cbe6a36dfc145c.jpg)![alt text](547d0362c73df9e48fd3547b6837577.jpg)
+![alt text](17aea711d90d799ee155d1a2d84a44b.jpg)
+![alt text](4deb76a749d20ef35ad28188bf58347.jpg)![alt text](b225667aefa403ae0b9ba434cf5b7f4.jpg)![alt text](a12a6b078e96dd14963bac620ee4358.jpg)
+
+## Fully Associative Cache（完全关联缓存）
+
+![alt text](image-102.png)
+![alt text](image-103.png)
+
+![alt text](image-104.png)
+
+Cache 未命中有三种类型
+
+强制未命中（Compulsory Miss）：第一次访问
+
+容量未命中（Capacity Miss）：Cache 太小装不下
+
+冲突未命中（Conflict Miss）：映射方式导致冲突（如直接映射）
+
+完全关联缓存会有强制未命中和容量未命中
+![alt text](image-105.png)
