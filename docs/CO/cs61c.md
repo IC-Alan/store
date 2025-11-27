@@ -1759,10 +1759,243 @@ IF/ID  ： 一个pc寄存器 一个inst寄存器，而且获取一条指令，�
 每个流水线寄存器都必须保存在该阶段执行的指令位
 
 还有控制位
-
+![alt text](bf49a745b3590b41ff867d455b7c304.jpg)(没太懂)
 只保存了pc没有保存pc+4 重建了pc+4 省了一堆寄存器
 
 所以前三个阶段是pc，内存访问阶段使用pc+4
 
 
 
+## 流水线冒险（pipelining  Hazards）
+有些情况下，不同阶段的指令之间会产生数据、控制或结构上的冲突，导致流水线不能顺利执行，这就是所谓的流水线冒险（hazard）。
+
+阻止在有指令正在执行时启动新指令
+
+
+## 2️⃣ 冒险的三大类型
+
+### (1) 数据冒险（Data Hazard）
+
+* **原因**：后一条指令需要使用前一条指令还没计算出的结果。
+1. ![alt text](15d54a7d5de22b18b7ef368a0d6101f.jpg)
+  寄存器要支持同时写入和读取（在61c里是先写入在读取）
+2. ![alt text](a170f2bf6345ed353762641193114e6.jpg)
+
+解决方法一：
+![alt text](39c457aa0e33eb7764b23047abf831c.jpg) ![alt text](ea1a066d50e741791edd2a2b6638608.jpg)
+  插入NOPS 即写入x0的任何指令（会导致性能损失）
+
+  但是编译器会进行一些优化，提前进行不依赖s0的指令
+
+解决方法二：
+
+转发：
+  ![alt text](a444cb2fc0156b7c59ef6eacab804ab.jpg)
+  ![alt text](7fd5f2b9024a1178d0e3f2885ec5593.jpg)
+  在指令寄存器里比较寄存器 ，判断是否转发
+  ![alt text](d9d950685339af41022c681f950fda3.jpg)
+  ALU B也要进行同样的操作
+---
+具体操作：
+![alt text](image-88.png)
+![alt text](image-89.png)
+![alt text](image-90.png)
+![alt text](image-91.png)
+
+---
+
+### (2) 控制冒险（Control Hazard / Branch Hazard）
+
+* **原因**：分支指令（如 `beq`, `j`）会改变 PC，但流水线可能已经取了下一条指令。
+* **示例**：
+
+  ```asm
+  beq $t0, $t1, Label
+  add $t2, $t3, $t4
+  ```
+
+  * CPU 还不确定分支是否成立，就取了 `add` 指令，可能要丢弃。
+ 
+
+  分支![alt text](5828ddd9879e3dd78c14aad1e2b0beb.jpg)
+
+ 要停2个stall直到是否跳转被算出来
+
+或者来预测 那样我们只需要很少的概率去stall（比如for循环，上一次继续执行，我们猜测这次也继续执行，只需要1bit的预测）
+![alt text](9105cd367171352b8338197ad90cd0e.jpg)
+![alt text](06b875e139dc3881b05b59dd7e7f5db.jpg)
+
+
+3. ![alt text](26397c392a68cb141c5ab847bed9cb1.jpg)加载的冲突
+![alt text](13e3dc571fb75c3ada14a9676ae7742.jpg)
+
+所以加载必须暂停了
+
+暂停一个周期 a load delay slot
+
+暂停完再转发
+![alt text](5f81569c1df5910c08a76ff528216c9.jpg)
+---
+暂停的具体操作：
+
+（这里暂停的要求是加载指令的rd和后续指令要访问的寄存器重复）
+![alt text](image-92.png)
+这样 EX 阶段就执行了一条空指令，让 load 数据有时间到达 WB。
+![alt text](image-93.png)
+![alt text](image-94.png)
+
+stall 的本质是：冻结前两级（PC 和 IF/ID），然后往下一级（ID/EX）插入 nop。
+---
+
+或者指 ![alt text](f1f3f25ee61bf071862d5a190529b40.jpg) 
+ 编译器来帮忙切换成后续不依赖的指令
+ 
+ 例子：
+ ![alt text](337fcc3053c7f7ca7146613b626aaf7.jpg)
+---
+
+### (3) 结构冒险（Structural Hazard）
+
+* **原因**：硬件资源冲突，不同指令同时需要同一个硬件单元。
+* **示例**：
+
+  * CPU 只有一个访存端口，EX 阶段和 MEM 阶段同时访问内存。
+* **解决方法**：
+
+  1. 增加资源（如增加访存端口、ALU）。
+  2. 流水线停顿（Stall）。
+
+  一般通过数据通路的设计来解决
+![alt text](e8d8ad9ccdab4ad2b941e8ad442a1d8.jpg)
+
+寄存器有3个端口要支持3个操作
+
+![alt text](baff386fbb37ca3e85c41fa2cdfbfbb.jpg)
+
+所以要两个内存，把DMEM和IMEM分开
+
+这里用了缓存
+
+![alt text](c5bbd035bb585cc336f5fd291931739.jpg)
+---
+
+## 3️⃣ 冒险的解决策略总结
+
+| 类型   | 解决方式          |
+| ---- | ------------- |
+| 数据冒险 | 数据转发、流水线停顿    |
+| 控制冒险 | 分支预测、分支延迟槽、停顿 |
+| 结构冒险 | 增加硬件资源、停顿     |
+
+---
+
+💡 **理解技巧**：
+
+* **数据冒险 = “数据没准备好就用”**
+* **控制冒险 = “不知道跳哪条就先执行了”**
+* **结构冒险 = “硬件挤不下，排队等”**
+
+# cache
+
+![alt text](7798fdc3ee494e52269d2ecaba6eae4.jpg)
+网络传输 硬盘 10进制
+
+其他都是 2进制（缓存 内存）
+
+![alt text](c6b6554d48aee25ee5699ea4d8a5aca.jpg)
+![alt text](image-95.png)
+![alt text](be42871621b347f16fe1fdab308432d.jpg)
+
+cache 是内存内容的一个副本
+
+指令和数据缓存分开一个范围大 一个范围小）
+![alt text](b9cf0472282e9118a144358998a95ba.jpg)
+
+内存是DRAM chip
+![alt text](2ac3885180a37729dd18634b198c1e8.jpg)
+寄存器（Register）
+    ↓
+缓存（L1 Cache。可能在chip上）
+    ↓
+Main Memory （DRAM）
+    ↓
+二级内存（disk/flash）
+
+
+CPU 不能直接访问 Disk，只能访问 Memory。
+Disk → Memory 的传输必须通过 I/O 控制器 + DMA + 总线 完成。
+![alt text](b33b618b1471d1a1106f888ba4857ad.jpg)
+三角形架构：（特点如下）：
+![alt text](e4646f77ee668953582858c26d5e9f6.jpg)
+往下便宜，慢，大，上面的是下面的子集
+
+这种设计的核心思想是为了给一种下面的存储能达到上面的存储速度，容量依然大的错觉
+
+## 实现
+![alt text](ac78f47d4d88e059643868a6cfae951.jpg)
+时间和空间局部性
+
+1. 刚使用过这个，下次可能还会使用，那就放在本地
+
+2. 刚访问过内存这个位置，下次可能会访问邻居，抓几个周围的东西回来
+
+![alt text](8924952ff9cab7539fd26c6d8876330.jpg)
+
+## Direct Mapped Caches（直接映射缓存）
+
+数据传输的单位：
+
+寄存器：字
+
+缓存：block（块）
+
+硬盘：文件
+
+
+缓存以块为单位移入移出，传输的单位，缓存以块为宽度
+
+![alt text](image-96.png)
+
+画memory 可以以byte为宽度，也可以word为宽度
+
+
+
+![alt text](image-97.png)这个和cpu pc的那个例图不太一样，那个图是0在下面（maybe）
+
+求大小实际是求面积
+
+![alt text](image-98.png) 当block是1字节的时候
+要求地址 mol 4 实际是取地址的低两位
+
+11101  7*4+1 很快！
+![alt text](image-99.png)
+block size = 2 bytes
+
+低三位的前两位索引到缓存的位置 蓝色还是红色，最后一位表示左右列
+
+地址去掉低三位（这个在缓存里是已知的）就是缓存编号
+![alt text](image-100.png)
+![alt text](image-101.png)
+![alt text](307c7a330643ed2ea97731adc04016d.jpg)
+
+用offset和index的位宽求出来面积
+
+8B 的data  2-byte blocks  有4块
+
+offset = 1 （块的大小决定）
+
+index = 2 （blocks个数）
+
+tag = 29（32 - 3）
+
+8就能确定面积
+![alt text](c86ed479cf92e24efea4519709e6614.jpg)
+
+### 一些术语
+![alt text](47068edbdd209b942af28c531ccaf1d.jpg)
+![alt text](1ccfb159fd9dea8f9dbef7816f20ead.jpg)![alt text](f43e39fc00bccc7ff50e11ad6672b26.jpg)![alt text](ffaa3b2dbfb7871f0917da00ab6a869.jpg)![alt text](57fa373fd0272ac28a6252c8b27ead0.jpg)
+
+
+L1 cache = 32 KB
+
+这 32KB 只包含数据块（data blocks）
