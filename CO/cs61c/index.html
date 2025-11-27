@@ -2136,9 +2136,200 @@ ALU 控制信息
 <pre><code>取址阶段 第一个时钟上沿pc写入新值并且pc寄存器输出新值，memory输出指令（组合逻辑） 下一个时钟上沿 指令和pc写入流水线寄存器，同时pc寄存器输入新值并输出新值
 </code></pre>
 <p>每个流水线寄存器都必须保存在该阶段执行的指令位</p>
-<p>还有控制位</p>
-<p>只保存了pc没有保存pc+4 重建了pc+4 省了一堆寄存器</p>
+<p>还有控制位
+<img alt="alt text" src="../bf49a745b3590b41ff867d455b7c304.jpg" />(没太懂)
+只保存了pc没有保存pc+4 重建了pc+4 省了一堆寄存器</p>
 <p>所以前三个阶段是pc，内存访问阶段使用pc+4</p>
+<h2 id="pipelining-hazards">流水线冒险（pipelining  Hazards）</h2>
+<p>有些情况下，不同阶段的指令之间会产生数据、控制或结构上的冲突，导致流水线不能顺利执行，这就是所谓的流水线冒险（hazard）。</p>
+<p>阻止在有指令正在执行时启动新指令</p>
+<h2 id="2_4">2️⃣ 冒险的三大类型</h2>
+<h3 id="1-data-hazard">(1) 数据冒险（Data Hazard）</h3>
+<ul>
+<li><strong>原因</strong>：后一条指令需要使用前一条指令还没计算出的结果。</li>
+<li><img alt="alt text" src="../15d54a7d5de22b18b7ef368a0d6101f.jpg" />
+  寄存器要支持同时写入和读取（在61c里是先写入在读取）</li>
+<li><img alt="alt text" src="../a170f2bf6345ed353762641193114e6.jpg" /></li>
+</ul>
+<p>解决方法一：
+<img alt="alt text" src="../39c457aa0e33eb7764b23047abf831c.jpg" /> <img alt="alt text" src="../ea1a066d50e741791edd2a2b6638608.jpg" />
+  插入NOPS 即写入x0的任何指令（会导致性能损失）</p>
+<p>但是编译器会进行一些优化，提前进行不依赖s0的指令</p>
+<p>解决方法二：</p>
+<p>转发：
+  <img alt="alt text" src="../a444cb2fc0156b7c59ef6eacab804ab.jpg" />
+  <img alt="alt text" src="../7fd5f2b9024a1178d0e3f2885ec5593.jpg" />
+  在指令寄存器里比较寄存器 ，判断是否转发
+  <img alt="alt text" src="../d9d950685339af41022c681f950fda3.jpg" />
+  ALU B也要进行同样的操作</p>
+<hr />
+<p>具体操作：
+<img alt="alt text" src="../image-88.png" />
+<img alt="alt text" src="../image-89.png" />
+<img alt="alt text" src="../image-90.png" />
+<img alt="alt text" src="../image-91.png" /></p>
+<hr />
+<h3 id="2-control-hazard-branch-hazard">(2) 控制冒险（Control Hazard / Branch Hazard）</h3>
+<ul>
+<li><strong>原因</strong>：分支指令（如 <code>beq</code>, <code>j</code>）会改变 PC，但流水线可能已经取了下一条指令。</li>
+<li><strong>示例</strong>：</li>
+</ul>
+<p><code>asm
+  beq $t0, $t1, Label
+  add $t2, $t3, $t4</code></p>
+<ul>
+<li>CPU 还不确定分支是否成立，就取了 <code>add</code> 指令，可能要丢弃。</li>
+</ul>
+<p>分支<img alt="alt text" src="../5828ddd9879e3dd78c14aad1e2b0beb.jpg" /></p>
+<p>要停2个stall直到是否跳转被算出来</p>
+<p>或者来预测 那样我们只需要很少的概率去stall（比如for循环，上一次继续执行，我们猜测这次也继续执行，只需要1bit的预测）
+<img alt="alt text" src="../9105cd367171352b8338197ad90cd0e.jpg" />
+<img alt="alt text" src="../06b875e139dc3881b05b59dd7e7f5db.jpg" /></p>
+<ol>
+<li><img alt="alt text" src="../26397c392a68cb141c5ab847bed9cb1.jpg" />加载的冲突
+<img alt="alt text" src="../13e3dc571fb75c3ada14a9676ae7742.jpg" /></li>
+</ol>
+<p>所以加载必须暂停了</p>
+<p>暂停一个周期 a load delay slot</p>
+<p>暂停完再转发
+<img alt="alt text" src="../5f81569c1df5910c08a76ff528216c9.jpg" /></p>
+<hr />
+<p>暂停的具体操作：</p>
+<p>（这里暂停的要求是加载指令的rd和后续指令要访问的寄存器重复）
+<img alt="alt text" src="../image-92.png" />
+这样 EX 阶段就执行了一条空指令，让 load 数据有时间到达 WB。
+<img alt="alt text" src="../image-93.png" />
+<img alt="alt text" src="../image-94.png" /></p>
+<h2 id="stall-pc-ifididex-nop">stall 的本质是：冻结前两级（PC 和 IF/ID），然后往下一级（ID/EX）插入 nop。</h2>
+<p>或者指 <img alt="alt text" src="../f1f3f25ee61bf071862d5a190529b40.jpg" /> 
+ 编译器来帮忙切换成后续不依赖的指令</p>
+<p>例子：
+ <img alt="alt text" src="../337fcc3053c7f7ca7146613b626aaf7.jpg" /></p>
+<hr />
+<h3 id="3-structural-hazard">(3) 结构冒险（Structural Hazard）</h3>
+<ul>
+<li><strong>原因</strong>：硬件资源冲突，不同指令同时需要同一个硬件单元。</li>
+<li>
+<p><strong>示例</strong>：</p>
+</li>
+<li>
+<p>CPU 只有一个访存端口，EX 阶段和 MEM 阶段同时访问内存。</p>
+</li>
+<li>
+<p><strong>解决方法</strong>：</p>
+</li>
+<li>
+<p>增加资源（如增加访存端口、ALU）。</p>
+</li>
+<li>流水线停顿（Stall）。</li>
+</ul>
+<p>一般通过数据通路的设计来解决
+<img alt="alt text" src="../e8d8ad9ccdab4ad2b941e8ad442a1d8.jpg" /></p>
+<p>寄存器有3个端口要支持3个操作</p>
+<p><img alt="alt text" src="../baff386fbb37ca3e85c41fa2cdfbfbb.jpg" /></p>
+<p>所以要两个内存，把DMEM和IMEM分开</p>
+<p>这里用了缓存</p>
+<h2 id="_48"><img alt="alt text" src="../c5bbd035bb585cc336f5fd291931739.jpg" /></h2>
+<h2 id="3_2">3️⃣ 冒险的解决策略总结</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>解决方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据冒险</td>
+<td>数据转发、流水线停顿</td>
+</tr>
+<tr>
+<td>控制冒险</td>
+<td>分支预测、分支延迟槽、停顿</td>
+</tr>
+<tr>
+<td>结构冒险</td>
+<td>增加硬件资源、停顿</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>💡 <strong>理解技巧</strong>：</p>
+<ul>
+<li><strong>数据冒险 = “数据没准备好就用”</strong></li>
+<li><strong>控制冒险 = “不知道跳哪条就先执行了”</strong></li>
+<li><strong>结构冒险 = “硬件挤不下，排队等”</strong></li>
+</ul>
+<h1 id="cache">cache</h1>
+<p><img alt="alt text" src="../7798fdc3ee494e52269d2ecaba6eae4.jpg" />
+网络传输 硬盘 10进制</p>
+<p>其他都是 2进制（缓存 内存）</p>
+<p><img alt="alt text" src="../c6b6554d48aee25ee5699ea4d8a5aca.jpg" />
+<img alt="alt text" src="../image-95.png" />
+<img alt="alt text" src="../be42871621b347f16fe1fdab308432d.jpg" /></p>
+<p>cache 是内存内容的一个副本</p>
+<p>指令和数据缓存分开一个范围大 一个范围小）
+<img alt="alt text" src="../b9cf0472282e9118a144358998a95ba.jpg" /></p>
+<p>内存是DRAM chip
+<img alt="alt text" src="../2ac3885180a37729dd18634b198c1e8.jpg" />
+寄存器（Register）
+    ↓
+缓存（L1 Cache。可能在chip上）
+    ↓
+Main Memory （DRAM）
+    ↓
+二级内存（disk/flash）</p>
+<p>CPU 不能直接访问 Disk，只能访问 Memory。
+Disk → Memory 的传输必须通过 I/O 控制器 + DMA + 总线 完成。
+<img alt="alt text" src="../b33b618b1471d1a1106f888ba4857ad.jpg" />
+三角形架构：（特点如下）：
+<img alt="alt text" src="../e4646f77ee668953582858c26d5e9f6.jpg" />
+往下便宜，慢，大，上面的是下面的子集</p>
+<p>这种设计的核心思想是为了给一种下面的存储能达到上面的存储速度，容量依然大的错觉</p>
+<h2 id="_49">实现</h2>
+<p><img alt="alt text" src="../ac78f47d4d88e059643868a6cfae951.jpg" />
+时间和空间局部性</p>
+<ol>
+<li>
+<p>刚使用过这个，下次可能还会使用，那就放在本地</p>
+</li>
+<li>
+<p>刚访问过内存这个位置，下次可能会访问邻居，抓几个周围的东西回来</p>
+</li>
+</ol>
+<p><img alt="alt text" src="../8924952ff9cab7539fd26c6d8876330.jpg" /></p>
+<h2 id="direct-mapped-caches">Direct Mapped Caches（直接映射缓存）</h2>
+<p>数据传输的单位：</p>
+<p>寄存器：字</p>
+<p>缓存：block（块）</p>
+<p>硬盘：文件</p>
+<p>缓存以块为单位移入移出，传输的单位，缓存以块为宽度</p>
+<p><img alt="alt text" src="../image-96.png" /></p>
+<p>画memory 可以以byte为宽度，也可以word为宽度</p>
+<p><img alt="alt text" src="../image-97.png" />这个和cpu pc的那个例图不太一样，那个图是0在下面（maybe）</p>
+<p>求大小实际是求面积</p>
+<p><img alt="alt text" src="../image-98.png" /> 当block是1字节的时候
+要求地址 mol 4 实际是取地址的低两位</p>
+<p>11101  7*4+1 很快！
+<img alt="alt text" src="../image-99.png" />
+block size = 2 bytes</p>
+<p>低三位的前两位索引到缓存的位置 蓝色还是红色，最后一位表示左右列</p>
+<p>地址去掉低三位（这个在缓存里是已知的）就是缓存编号
+<img alt="alt text" src="../image-100.png" />
+<img alt="alt text" src="../image-101.png" />
+<img alt="alt text" src="../307c7a330643ed2ea97731adc04016d.jpg" /></p>
+<p>用offset和index的位宽求出来面积</p>
+<p>8B 的data  2-byte blocks  有4块</p>
+<p>offset = 1 （块的大小决定）</p>
+<p>index = 2 （blocks个数）</p>
+<p>tag = 29（32 - 3）</p>
+<p>8就能确定面积
+<img alt="alt text" src="../c86ed479cf92e24efea4519709e6614.jpg" /></p>
+<h3 id="_50">一些术语</h3>
+<p><img alt="alt text" src="../47068edbdd209b942af28c531ccaf1d.jpg" />
+<img alt="alt text" src="../1ccfb159fd9dea8f9dbef7816f20ead.jpg" /><img alt="alt text" src="../f43e39fc00bccc7ff50e11ad6672b26.jpg" /><img alt="alt text" src="../ffaa3b2dbfb7871f0917da00ab6a869.jpg" /><img alt="alt text" src="../57fa373fd0272ac28a6252c8b27ead0.jpg" /></p>
+<p>L1 cache = 32 KB</p>
+<p>这 32KB 只包含数据块（data blocks）</p>
 
 
 
