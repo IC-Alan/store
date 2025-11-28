@@ -11,8 +11,6 @@
         <link rel="canonical" href="https://IC-Alan.github.io/store/CO/cs61c/">
       
       
-        <link rel="prev" href="../..">
-      
       
       
         
@@ -193,33 +191,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Welcome to MkDocs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -233,10 +204,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
             
   
   
@@ -254,8 +225,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2320,16 +2291,44 @@ block size = 2 bytes</p>
 <img alt="alt text" src="../307c7a330643ed2ea97731adc04016d.jpg" /></p>
 <p>用offset和index的位宽求出来面积</p>
 <p>8B 的data  2-byte blocks  有4块</p>
-<p>offset = 1 （块的大小决定）</p>
-<p>index = 2 （blocks个数）</p>
-<p>tag = 29（32 - 3）</p>
+<p>blocks 的单位是byte</p>
+<p>offset = 1位 （块的大小决定） offset的单位是byte（因为内存地址的单位是byte）</p>
+<p>index = 2位 （blocks个数）</p>
+<p>tag = 29位（32 - 3）</p>
 <p>8就能确定面积
 <img alt="alt text" src="../c86ed479cf92e24efea4519709e6614.jpg" /></p>
 <h3 id="_50">一些术语</h3>
 <p><img alt="alt text" src="../47068edbdd209b942af28c531ccaf1d.jpg" />
 <img alt="alt text" src="../1ccfb159fd9dea8f9dbef7816f20ead.jpg" /><img alt="alt text" src="../f43e39fc00bccc7ff50e11ad6672b26.jpg" /><img alt="alt text" src="../ffaa3b2dbfb7871f0917da00ab6a869.jpg" /><img alt="alt text" src="../57fa373fd0272ac28a6252c8b27ead0.jpg" /></p>
 <p>L1 cache = 32 KB</p>
-<p>这 32KB 只包含数据块（data blocks）</p>
+<p>这 32KB 只包含数据块（data blocks）
+<img alt="alt text" src="../acf8c43c842c4cf1d4223fd49207955.jpg" />
+offset后两位总是0，因为我处理的数据以字为单位，所以我加载下一个数据需要偏移n个字，所以后两位 （字= 4 byte）总是0</p>
+<p>而且用了空间局限性， block是4 word，把周围的4 word都加载进去</p>
+<p>检查cache的顺序实际是IVTO 先看index，再看valid</p>
+<h3 id="_51">硬件实现</h3>
+<ol>
+<li>读操作
+<img alt="alt text" src="../57083bdc376576c0a0ccef0159c092f.jpg" /></li>
+</ol>
+<p>这是同时的，如果hit我就要这个data，没hit我就忽略这个data</p>
+<ol>
+<li>写操作</li>
+</ol>
+<p>两种方式
+<img alt="alt text" src="../98615cd10a71a6380cbe6a36dfc145c.jpg" /><img alt="alt text" src="../547d0362c73df9e48fd3547b6837577.jpg" />
+<img alt="alt text" src="../17aea711d90d799ee155d1a2d84a44b.jpg" />
+<img alt="alt text" src="../4deb76a749d20ef35ad28188bf58347.jpg" /><img alt="alt text" src="../b225667aefa403ae0b9ba434cf5b7f4.jpg" /><img alt="alt text" src="../a12a6b078e96dd14963bac620ee4358.jpg" /></p>
+<h2 id="fully-associative-cache">Fully Associative Cache（完全关联缓存）</h2>
+<p><img alt="alt text" src="../image-102.png" />
+<img alt="alt text" src="../image-103.png" /></p>
+<p><img alt="alt text" src="../image-104.png" /></p>
+<p>Cache 未命中有三种类型</p>
+<p>强制未命中（Compulsory Miss）：第一次访问</p>
+<p>容量未命中（Capacity Miss）：Cache 太小装不下</p>
+<p>冲突未命中（Conflict Miss）：映射方式导致冲突（如直接映射）</p>
+<p>完全关联缓存会有强制未命中和容量未命中
+<img alt="alt text" src="../image-105.png" /></p>
 
 
 
